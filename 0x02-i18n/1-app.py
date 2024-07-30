@@ -19,7 +19,7 @@ app.config.from_object(Config)
 app.url_map.strict_slashes = False
 
 """Instantiate the Babel object"""
-Babel = Babel(app)
+babel = Babel(app)
 
 
 @app.route("/")

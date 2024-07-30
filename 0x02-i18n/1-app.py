@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
-""" 0. Basic Flask app. """
+""" Module for instantiating Babel object in app """
 from flask import Flask, render_template
 from flask_babel import Babel
 
 
 class Config:
-    """ Config class for app """
+    """configuration class for configuration settings"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
+"""configure the Flask instance to use the config class"""
 app.config.from_object(Config)
 app.url_map.strict_slashes = False
 
+"""Instantiate the Babel object"""
 babel = Babel(app)
 
 
 @app.route("/")
-def welcome() -> str:
-    """ / page """
+def welcome_page() -> str:
+    """ Route for the welcome page """
     return render_template('1-index.html')
 
 

@@ -21,7 +21,7 @@ babel = Babel(app)
 
 
 @app.route("/")
-def welcome_page():
+def welcome_page() -> str:
     """ Route for the welcome page """
     return render_template('1-index.html')
 

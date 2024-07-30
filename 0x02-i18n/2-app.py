@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module for get_locale function"""
-from flask import Flask, render_template, request
 from flask_babel import Babel
+from flask import Flask, render_template, request
 
 
 class Config:
@@ -26,7 +26,7 @@ def get_locale() -> str:
 
 
 @app.route('/')
-def home_page() -> str:
+def get_home_page() -> str:
     """ Route for the home page """
     return render_template('2-index.html')
 

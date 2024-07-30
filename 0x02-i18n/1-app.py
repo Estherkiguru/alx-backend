@@ -4,10 +4,8 @@ from flask import Flask, render_template
 from flask_babel import Babel
 
 
-"""configuration class for configuration settings"""
-
-
 class Config:
+    """configuration class for configuration settings"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULE_TIMEZONE = "UTC"

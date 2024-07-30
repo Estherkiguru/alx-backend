@@ -10,6 +10,7 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
 """Mock user database"""
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -36,6 +37,7 @@ def get_locale() -> str:
         return locale
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
+
 def get_user() -> dict:
     '''Returns a user dictionary based on URL parameter'''
     if request.args.get('login_as'):
@@ -44,6 +46,7 @@ def get_user() -> dict:
             return users.get(user)
     else:
         return None
+
 
 @app.before_request
 def before_request():

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-""" Module for get_locale function"""
-from flask_babel import Babel
+""" Module for instantiating Babel object in app """
 from flask import Flask, render_template, request
+from flask_babel import Babel
 
 
 class Config:
@@ -24,10 +24,9 @@ def get_locale() -> str:
     """Determines best match with supported languages"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
-
-@app.route('/')
-def get_home_page() -> str:
-    """ Route for the home page """
+@app.route("/")
+def welcome_page() -> str:
+    """ Route for the welcome page """
     return render_template('2-index.html')
 
 

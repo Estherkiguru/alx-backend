@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-""" Module for instantiating Babel object in app """
-from flask import Flask, render_template
+""" Module for get_locale function"""
 from flask_babel import Babel
+from flask import Flask, render_template, request
 
 
 class Config:
     """configuration class for configuration settings"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULE_TIMEZONE = "UTC"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 app = Flask(__name__)
@@ -19,11 +19,16 @@ app.url_map.strict_slashes = False
 """Instantiate the Babel object"""
 babel = Babel(app)
 
+@babel.localeselector
+def get_locale() -> str:
+    """Determines best match with supported languages"""
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
 
-@app.route("/")
-def welcome_page() -> str:
-    """ Route for the welcome page """
-    return render_template('1-index.html')
+
+@app.route('/')
+def get_home_page() -> str:
+    """ Route for the home page """
+    return render_template('2-index.html')
 
 
 if __name__ == '__main__':

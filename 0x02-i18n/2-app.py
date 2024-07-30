@@ -20,13 +20,13 @@ app.url_map.strict_slashes = False
 babel = Babel(app)
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """Determines best match with supported laguages"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 @app.route("/")
-def home_page():
+def home_page() -> str:
     """ Route for the home page """
     return render_template('2-index.html')
 

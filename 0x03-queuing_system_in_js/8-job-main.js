@@ -10,3 +10,4 @@ const list = [
     message: 'This is the code 1234 to verify your account'
     }
 ];
+createPushNotificationsJobs(list, queue);
